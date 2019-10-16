@@ -1,0 +1,26 @@
+- html este practic ca un arbore
+cum face layout-ul?
+
+elemente de tip block si inline;
+pre - pastreaza liniile cum le-am setat (ca identare)
+span - pentru grupare
+
+
+UL-> li (list item)
+
+ol - order list
+
+      -> caption (o sa fie pus deasupra tablelului)
+      -> thead -> tr -> td sau th (bold)
+table -> table body (tbody)  -> randuri (tr) -> celule td
+      -> tfoot -> tr -> td
+
+
+pentru celule (td) - avem doua atribute colspan si rowspan (cat ocupa acea celula)
+
+
+
+form
+label
+input type=""
+select + option combobox
