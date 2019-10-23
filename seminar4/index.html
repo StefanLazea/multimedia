@@ -4,6 +4,55 @@
     <meta charset="UTF-8">
     <title>Agenda telefonică</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', appInit);
+        function appInit(){
+            console.log("DOM incarcat");
+            let btn = document.querySelector("#btnAdauga");
+            btn.addEventListener('click', adauga);
+
+
+            for(let rand of document.querySelectorAll("tbody tr")){
+                rand.addEventListener('mouseenter', changeColor);
+                rand.addEventListener('mouseleave', changeColorAgain);
+            }
+        }
+        console.log("Initializare"); // mai intai, pentru ca se construieste doc 
+
+        function changeColor(){
+            this.style.backgroundColor = "pink";
+        }
+
+        function changeColorAgain(){
+            this.style.backgroundColor = "white";
+        }
+        
+        function adauga(){
+            console.log("adauga");
+            let nume = document.querySelector("#nume").value;
+            let prenume = document.querySelector("#prenume").value;
+            let telefon = document.querySelector("#telefon").value;
+
+            let tbody = document.querySelector("tbody");
+            let row = document.createElement("tr");
+            tbody.append(row);
+
+            function adaugaRand(text){
+                let cell = document.createElement("td");
+                cell.innerText = text;
+                row.append(cell);
+            }
+
+            adaugaRand(nume);
+            adaugaRand(prenume);
+            adaugaRand(telefon);
+            row.addEventListener('mouseenter', changeColor);
+            row.addEventListener('mouseleave', changeColorAgain);
+        }
+
+
+        
+    </script>
 </head>
 <body>
     <h1>Agenda telefonică</h1>
