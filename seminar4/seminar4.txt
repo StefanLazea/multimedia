@@ -1,0 +1,15 @@
+static/relative -> in layout (implicita static)
+
+absolute/fixed
+
+fixed: pozitionare dupa fereastra (deci are treaba doar cu fereastra)
+position: absolute; ia dimensiunea continutuluil si se face pozitionarea dupa primul parinte
+ 
+
+childNodes - pentru toti copii contine referinte
+
+
+
+evenimente 
+Parms: target, type(ce fel de eveniment)
+DOMContentLoaded(document)

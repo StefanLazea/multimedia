@@ -44,7 +44,8 @@ input {
     display: block;
     float: right;
     width: 60%;
-    height: 40px;
+    height: 20px;
+    margin-bottom: 5px;
 }
 
 caption {
