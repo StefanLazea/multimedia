@@ -1,0 +1,53 @@
+body {
+    font-family: Tahoma;
+    font-size: 12pt;
+    line-height: 1.2em;
+    margin: 0px;
+    padding: 12px;
+}
+/* se calculeaza Bb + Mb + Pa + Ba + Ma = 0 */
+h1 {
+    color: white;
+    background-color: navy;
+    padding: 16px;
+    margin:-12px;
+    margin-bottom: 20px;
+}
+
+table {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    float: left;
+    width: 50%;
+}
+
+td, th {
+    border-bottom: 1px solid grey;
+    text-align: left;
+}
+
+form {
+    border: 1px solid grey;
+    float: right;
+    width: 45%;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    float: left;
+    width: 30%;
+    clear: both;
+}
+
+input {
+    display: block;
+    float: right;
+    width: 60%;
+    height: 40px;
+}
+
+caption {
+    border: 1px solid;
+}
+/* TODO de incercat */
