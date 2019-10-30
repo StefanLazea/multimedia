@@ -11,18 +11,28 @@
             function afisare(persoane){
                 $('tbody').empty();
                 for(let persoana of persoane){
-                    
+                    $('<tr></tr>')
+                        .append($('<td></td>').text(persoana.nume))
+                        .append($('<td></td>').text(persoana.prenume))
+                        .append($('<td></td>').text(persoana.telefon))
+                    .appendTo($('tbody'));
                 }
+                $('tfoot td').text(`Numar persoane: ${$('tbody tr').length}`);
             }
             $('#btnAdauga').on('click',() => {
-                // creare rand
-                $('<tr></tr>')
-                    .append($('<td></td>').text($('#nume').val()))
-                    .append($('<td></td>').text($('#prenume').val()))
-                    .append($('<td></td>').text($('#telefon').val()))
-                    .appendTo($('tbody'));
-                $('tfoot td').text(`Numar persoane: ${$('tbody tr').length}`);
+                const persoana = {
+                    nume: $('#nume').val(),
+                    prenume: $('#prenume').val(),
+                    telefon: $('#telefon').val(),
+                };
+                $.post('http://ase.softmentor.ro/agenda', JSON.stringify(persoana));
             });
+
+            setInterval(()=>{
+                $.getJSON('http://ase.softmentor.ro/agenda', afisare);
+            }, 3000)
+
+            
         })
     
     </script>
