@@ -5,6 +5,27 @@
     <title>Agenda telefonică</title>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <script type="text/javascript" src="assets/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(()=>{
+
+            function afisare(persoane){
+                $('tbody').empty();
+                for(let persoana of persoane){
+                    
+                }
+            }
+            $('#btnAdauga').on('click',() => {
+                // creare rand
+                $('<tr></tr>')
+                    .append($('<td></td>').text($('#nume').val()))
+                    .append($('<td></td>').text($('#prenume').val()))
+                    .append($('<td></td>').text($('#telefon').val()))
+                    .appendTo($('tbody'));
+                $('tfoot td').text(`Numar persoane: ${$('tbody tr').length}`);
+            });
+        })
+    
+    </script>
 </head>
 <body>
     <h1>Agenda telefonică</h1>

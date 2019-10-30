@@ -1,0 +1,12 @@
+$() -> un obiect pentru a apela functiile de jquery
+
+
+
+p.innerText (ca nu are referinta la obiectul pe care l vrem)
+
+
+
+$(function) -> executie cand s-a incarcat DOM
+
+
+$('#nume').val() -> ne intoarce valoarea curenta
