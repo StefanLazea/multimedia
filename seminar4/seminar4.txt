@@ -13,3 +13,5 @@ childNodes - pentru toti copii contine referinte
 evenimente 
 Parms: target, type(ce fel de eveniment)
 DOMContentLoaded(document)
+
+this se seteaza la apel
