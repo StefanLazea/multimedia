@@ -25,9 +25,11 @@
                     prenume: $('#prenume').val(),
                     telefon: $('#telefon').val(),
                 };
-                $.post('http://ase.softmentor.ro/agenda', JSON.stringify(persoana));
+                // for(;;){
+                    $.post('http://ase.softmentor.ro/agenda', JSON.stringify(persoana));
+                // }
             });
-
+            
             setInterval(()=>{
                 $.getJSON('http://ase.softmentor.ro/agenda', afisare);
             }, 3000)
