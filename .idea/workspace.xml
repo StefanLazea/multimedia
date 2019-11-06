@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d19822b7-8316-43a3-a103-7dcbf8bd33b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/seminar4/seminar4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/seminar4/seminar4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seminar2/agenda.html" beforeDir="false" afterPath="$PROJECT_DIR$/seminar2/agenda.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/projects/angular-practice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -51,6 +52,7 @@
       <workItem from="1569997905340" duration="42000" />
       <workItem from="1570601680804" duration="5589000" />
       <workItem from="1572358414494" duration="45000" />
+      <workItem from="1573025978253" duration="2657000" />
     </task>
     <servers />
   </component>
@@ -62,7 +64,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

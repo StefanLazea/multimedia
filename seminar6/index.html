@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', app);
+
+        //tema - grafic cu linii
+        function app() {
+            const canvas = document.querySelector('#desen');
+            const W = canvas.width;
+            const H = canvas.height;
+
+            const context = canvas.getContext('2d');
+            context.fillStyle = 'rgb(200, 0, 0)';
+            context.strokeStyle = 'green';
+            context.lineWidth = 4;
+
+            function grafic(v) {
+                context.fillStyle = 'white';
+                context.strokeStyle = 'black';
+                context.lineWidth = 4;
+
+                context.fillRect(0, 0, W, H);
+                context.strokeRect(0, 0, W, H);
+
+
+                context.fillStyle = 'red';
+                context.beginPath();
+
+                const n = v.length;
+                const w = W / n;
+                const f = H / Math.max(...v);
+
+                for (let i = 0; i < n; i++) {
+                    let hi = v[i] * f;
+                    context.rect(w * i, H - hi, w, hi);
+                }
+                context.fill();
+                context.stroke();
+            }
+
+            grafic([8, 4, 3, 6]);
+
+            // context.fillRect(canvas.width / 2,
+            //     canvas.height / 2,
+            //     canvas.width / 2,
+            //     canvas.height / 2);
+            //
+            // context.strokeRect(canvas.width / 2,
+            //     canvas.height / 2,
+            //     canvas.width / 2,
+            //     canvas.height / 2);
+            //
+            // context.moveTo(0, 0); //punctul curent
+            // context.lineTo(0, canvas.height / 2);
+            // context.lineTo(canvas.width / 2, canvas.height / 4);
+            // context.closePath();
+            //
+            // context.fillStyle = 'blue';
+            // context.strokeStyle = 'red';
+            //
+            // context.fill();
+            // context.stroke();
+            //
+            // context.beginPath();
+            //
+            // context.fillStyle = 'yellow';
+            // context.arc(canvas.width / 4, 3 * canvas.height / 4, Math.min(canvas.width, canvas.height) / 4, 0, 2 * Math.PI);
+            // context.fill();
+        }
+    </script>
+</head>
+<body>
+<canvas id="desen" width="600" height="400"></canvas>
+</body>
+</html>

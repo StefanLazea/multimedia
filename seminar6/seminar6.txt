@@ -1,0 +1,30 @@
+canvas
+.wifth
+.height
+
+
+
+un obiect context 
+getContext('2d');
+
+in context avem niste atribute de desenare
+
+pentru desenat efectiv: 
+fillRect sau
+strokeRect(x,y,w,h)
+
+
+lista figuri, metode pentru adaugare elemente:
+.moveTo(x,y)
+.lineTo(x,y)
+.rect(x,y,w,h) -> rect
+.arc(x,y,r,sa,la) ->ar de cerc; sa unghi inceput;
+.closePath()  -- deseneaza o linie pe la inceput ?
+
+
+.beginPath() - sterge lista din context
+
+Pentru desenat: 
+se uita la atribute, apoi la lista de figuri (doar citesc din lista)
+.fill()
+.stroke()
