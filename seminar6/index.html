@@ -37,9 +37,25 @@
                 }
                 context.fill();
                 context.stroke();
+
+            
+                context.beginPath();
+                for (let i = 0; i < n; i++) {
+                    let hi = v[i] * f;
+                    context.lineTo(i*w + w/2, H-hi);
+                }
+                context.strokeStyle="yellow";
+                
+                context.stroke();
+                
             }
 
             grafic([8, 4, 3, 6]);
+            //  context.moveTo(0, 0); //punctul curent
+            // context.lineTo(0, canvas.height / 2);
+            // context.lineTo(canvas.width / 2, canvas.height / 4);
+            // context.closePath();
+            // context.stroke();
 
             // context.fillRect(canvas.width / 2,
             //     canvas.height / 2,
