@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        canvas {
+            display: block;
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+
+        // vezi http://ec.europa.eu/eurostat/web/json-and-unicode-web-services/getting-started/rest-request pentru format
+        const baseUrl = 'http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/';
+
+        const tari = ["BG", "CZ", "HR", "HU", "PL", "RO", "SK"];
+        const ani = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+        const indicatori = [
+            { nume: 'INT', param: 'tin00028?ind_type=IND_TOTAL&filterNonGeo=1&precision=1&unit=PC_IND&indic_is=I_ILT12' },
+            { nume: 'POP', param: 'tps00001?indic_de=JAN&filterNonGeo=1&precision=1' },
+            { nume: 'PIB', param: 'tec00114?indic_de=JAN&filterNonGeo=1&precision=1' }
+        ];
+
+        //pentru a adauga url-ui de baza paramentrii; pentru a obtine date
+        function getUrl(numeIndicator) {
+            let url = baseUrl;
+            url += indicatori.find(item => item.nume === numeIndicator).param;
+            url += '&' + tari.map(item => `geo=${item}`).join('&');
+            url += '&' + ani.map(item => `time=${item}`).join('&');
+            return url;
+        }
+
+        async function getData() {
+            const rezultat = [];
+            for (let indicator of indicatori) {
+                let raspuns = await fetch(getUrl(indicator.nume));
+                let date = await raspuns.json();
+
+                let index = 0;
+                for (let tara of tari) {
+                    for (let an of ani) {
+                        rezultat.push({
+                            tara: tara,
+                            an: an,
+                            indicator: indicator.nume,
+                            valoare: date.value[index] === undefined ? 0 : date.value[index]
+                        })
+                        index++;
+                    }
+                }
+            }
+            return rezultat;
+        }
+
+        let date = null;
+        document.addEventListener('DOMContentLoaded', app);
+        async function app() {
+            date = await getData();
+            date = date.map(item => {
+                const valori = date.filter(x => x.indicator === item.indicator)
+                    .map(x => x.valoare);
+                const min = Math.min(...valori);
+                const max = Math.max(...valori);
+                item.valoareNormalizata = (item.valoare - min) / (max - min);
+                return item;
+            });
+            console.table(date);
+
+            const canvas = document.querySelector('canvas');
+            const W = canvas.width, H = canvas.height;
+            const context = canvas.getContext('2d');
+
+            let anCurent = 2008;
+            function desenareGrafic() {
+                for (let tara of tari) {
+                    //noi stim tara, an, indicator
+                    //deci trebuie sa gasim valoarea
+                    let x = date.find(item => item.tara === tara
+                        && item.an === anCurent
+                        && item.indicator === 'PIB').valoareNormalizata * W;
+                    //pentru a desena cercul; o sa fie in functi de valoarea normalizata
+                    let y = H - date.find(item => item.tara === tara
+                        && item.an === anCurent
+                        && item.indicator === 'INT').valoareNormalizata * H;
+                    let r = date.find(item => item.tara === tara
+                        && item.an === anCurent
+                        && item.indicator === 'POP').valoareNormalizata * 100;
+
+                    context.arc(x, y, r, 0, 2 * Math.PI);
+                    context.fill();
+                    context.stroke();
+                }
+            }
+
+            desenareGrafic();
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <p>
+        <span>2008</span>
+        <input type="button" value=">" />
+    </p>
+    <canvas width="600" height="400"></canvas>
+</body>
+
+</html>
