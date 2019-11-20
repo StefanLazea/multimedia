@@ -68,7 +68,7 @@
                 item.valoareNormalizata = (item.valoare - min) / (max - min);
                 return item;
             });
-            console.table(date);
+            // console.table(date);
 
             const canvas = document.querySelector('canvas');
             const W = canvas.width, H = canvas.height;
@@ -90,9 +90,15 @@
                         && item.an === anCurent
                         && item.indicator === 'POP').valoareNormalizata * 100;
 
+                    context.beginPath(); //ca sa le separam
+                    context.fillStyle =
+                        `hsla(${tari.findIndex(x => x === tara) * 50}, 100%, 50%, 0.7`;
                     context.arc(x, y, r, 0, 2 * Math.PI);
                     context.fill();
                     context.stroke();
+
+                    context.fillStyle = 'black';
+                    context.fillText(tara, x, y);
                 }
             }
 
