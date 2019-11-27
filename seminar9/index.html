@@ -19,7 +19,10 @@
             let stare = 'oprit';
 
             //ptr a tine minte
+            //dx si dx ptr a calcula diferenta
             let dx = 0, dy = 0;
+
+            let listaPozitii = [], indexPozitii; //{x,y}
 
             //2.desenare
             function desenare() {
@@ -54,6 +57,15 @@
                 if (stare === 'drag') {
                     x = mx - dx;
                     y = my - dy;
+                    listaPozitii.push({ x, y });
+                } else if (stare === 'redare') {
+                    if (indexPozitii < listaPozitii.length) {
+                        x = listaPozitii[indexPozitii].x;
+                        y = listaPozitii[indexPozitii].y;
+                        indexPozitii++;
+                    } else {
+                        stare = 'oprit';
+                    }
                 }
             }
             setInterval(actualizare, 10);
@@ -68,16 +80,26 @@
             canvas.addEventListener('mousedown', e => {
                 if (x <= mx && mx <= (x + w) &&
                     y <= my && my <= (y + h)) {
-                    stare = 'drag';
+
+                    if (e.ctrlKey) {
+                        stare = 'redare';
+                        indexPozitii = 0;
+                    } else
+                        stare = 'drag';
                     dx = mx - x;
                     dy = my - y;
+                }
+
+            });
+
+            canvas.addEventListener('mouseup', e => {
+                if (!e.ctrlKey) {
+                    stare = 'oprit';
 
                 }
             })
 
-            canvas.addEventListener('mouseup', e => {
-                stare = 'oprit';
-            })
+
             // canvas.addEventListener('click', e => {
             //     x = mx;
             //     y = my;
