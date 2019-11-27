@@ -1,0 +1,7 @@
+1. model (valorile care se modifica)-> intr o var simpla sau obiect
+exista o functi de desenare(); sa citeasca datele din model si sa redeseneze
+        - o prog cu requestAnimationFrame
+
+2. browser 
+3. Actualizare (functia de actualizare; sa citeasca starea curenta si sa o calculeze pe urmatoarea) - setInterval
+4. interactiune
