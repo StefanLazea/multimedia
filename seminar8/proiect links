@@ -1,0 +1,6 @@
+https://ec.europa.eu/eurostat/data/database - pentru a alege setul de date
+
+request de tip rest, pentru a lua datele https://ec.europa.eu/eurostat/web/json-and-unicode-web-services/getting-started/rest-request
+
+
+pentru a construi un link de genul: query builder https://ec.europa.eu/eurostat/web/json-and-unicode-web-services/getting-started/query-builder
