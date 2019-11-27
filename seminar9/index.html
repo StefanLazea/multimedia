@@ -13,6 +13,8 @@
             //1. Model
 
             let x = 250, y = 200, w = 70, h = 70, vy = -1.5;
+            //pozitia mouse ului
+            let mx = 0, my = 0;
 
             //2.desenare
             function desenare() {
@@ -25,6 +27,8 @@
                 context.fillStyle = 'red';
                 context.fillRect(x, y, w, h);
 
+
+                context.fillText(`mx=${mx} my=${my}`, 10, 10);
 
                 requestAnimationFrame(desenare);
             }
@@ -42,6 +46,18 @@
                 }
             }
             setInterval(actualizare, 10);
+
+
+            //4. evenimente
+            canvas.addEventListener('mousemove', e => {
+                mx = Math.round(e.clientX - canvas.getBoundingClientRect().left);
+                my = Math.round(e.clientY - canvas.getBoundingClientRect().top);
+            });
+
+            canvas.addEventListener('click', e => {
+                x = mx;
+                y = my;
+            })
         }
     </script>
 </head>
