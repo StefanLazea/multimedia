@@ -15,6 +15,11 @@
             let x = 250, y = 200, w = 70, h = 70, vy = -1.5;
             //pozitia mouse ului
             let mx = 0, my = 0;
+            //starea obiectului; oprit si drag, redare
+            let stare = 'oprit';
+
+            //ptr a tine minte
+            let dx = 0, dy = 0;
 
             //2.desenare
             function desenare() {
@@ -35,14 +40,20 @@
             desenare();
 
             function actualizare() {
-                y = y + vy;
+                // y = y + vy;
 
-                if (y < 0) {
-                    y = 0;
-                    vy = Math.abs(vy);
-                } else if (y + h > H) {
-                    y = H - h;
-                    vy = -Math.abs(vy);
+                // //cand are viteza negativa si trece de y
+                // if (y < 0) {
+                //     y = 0;
+                //     vy = Math.abs(vy);
+                //     //cand se duce in sus, daca depaseste dimensiunea canvas ului
+                // } else if (y + h > H) {
+                //     y = H - h;
+                //     vy = -Math.abs(vy);
+                // }
+                if (stare === 'drag') {
+                    x = mx - dx;
+                    y = my - dy;
                 }
             }
             setInterval(actualizare, 10);
@@ -54,10 +65,23 @@
                 my = Math.round(e.clientY - canvas.getBoundingClientRect().top);
             });
 
-            canvas.addEventListener('click', e => {
-                x = mx;
-                y = my;
+            canvas.addEventListener('mousedown', e => {
+                if (x <= mx && mx <= (x + w) &&
+                    y <= my && my <= (y + h)) {
+                    stare = 'drag';
+                    dx = mx - x;
+                    dy = my - y;
+
+                }
             })
+
+            canvas.addEventListener('mouseup', e => {
+                stare = 'oprit';
+            })
+            // canvas.addEventListener('click', e => {
+            //     x = mx;
+            //     y = my;
+            // })
         }
     </script>
 </head>
