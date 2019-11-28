@@ -4,4 +4,15 @@ exista o functi de desenare(); sa citeasca datele din model si sa redeseneze
 
 2. browser 
 3. Actualizare (functia de actualizare; sa citeasca starea curenta si sa o calculeze pe urmatoarea) - setInterval
-4. interactiune
+4. event handler (interactiune)
+
+
+
+viteza = pixeli/sec
+
+1.5 pixel cu cat se deplaseaza
+
+o data la 10 milisecunde - 1 sec = 1000mili
+deci functia se apeleaza de 100 ori
+
+deci s-a miscat de 1.5*100 = 150 px/sec
