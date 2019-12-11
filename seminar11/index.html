@@ -48,6 +48,15 @@
                 if (index === 1) {
                     avanseaza();
                 }
+
+                const mx = e.clientX - canvas.getBoundingClientRect().left;
+                const my = e.clientY - canvas.getBoundingClientRect().top;
+
+                if (audio.duration && 5 <= mx && mx <= 5 + W - 10
+                    && 5 <= my && my <= 30 + 5) {
+                    const pozitie = (mx - 5) / (W - 10);
+                    audio.currentTime = pozitie * audio.duration;
+                }
             })
         }
     </script>
