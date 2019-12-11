@@ -32,6 +32,26 @@
                 context.strokeStyle = 'black';
                 context.strokeRect(5, 5, W - 10, 30);
 
+                context.fillStyle = 'coral';
+                context.fillRect(5, 45, 30, 30);
+                context.fillStyle = 'black';
+
+                if (audio.paused) {
+                    context.beginPath();
+                    context.moveTo(10, 50);//5+5 si 5+45
+                    context.lineTo(30, 60);
+                    context.lineTo(10, 70);
+                    context.fill();
+                    context.closePath();
+                } else {
+                    //desenat 2 dreptunghiuri
+                    context.beginPath();
+                    context.moveTo(10, 25);
+                    context.lineTo(10, 30);
+                    context.fill();
+                    context.closePath();
+                }
+
                 requestAnimationFrame(desenare);
             }
             desenare();
@@ -52,12 +72,25 @@
                 const mx = e.clientX - canvas.getBoundingClientRect().left;
                 const my = e.clientY - canvas.getBoundingClientRect().top;
 
-                if (audio.duration && 5 <= mx && mx <= 5 + W - 10
+                if (audio.duration && 5 <= mx
+                    && mx <= 5 + W - 10
                     && 5 <= my && my <= 30 + 5) {
                     const pozitie = (mx - 5) / (W - 10);
                     audio.currentTime = pozitie * audio.duration;
                 }
+
+                //daca se afla in interiorul butonului
+                if (mx >= 5 && mx <= 35 && my >= 45 && my <= 75) {
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
+
+                }
             })
+
+            audio.addEventListener('ended', avanseaza)
         }
     </script>
 </head>
