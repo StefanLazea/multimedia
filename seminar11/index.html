@@ -2,10 +2,59 @@
 
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', app);
+        function app() {
+            // model
+            const audio = document.createElement('audio');
+            audio.controls = true;
+            document.body.append(audio);
+
+            const canvas = document.querySelector('canvas');
+            const W = canvas.width, H = canvas.height;
+            const context = canvas.getContext('2d');
+
+            const lista = ['blinding.mp3', 'hollywoods.mp3', 'take.mp3'];
+            let index = 1;
+            // desenare
+            function desenare() {
+                context.fillStyle = 'silver';
+                context.fillRect(0, 0, W, H);
+
+
+                let pozitie = 0;
+                if (audio.currentTime && audio.duration) {
+                    pozitie = audio.currentTime / audio.duration;
+                }
+
+                context.fillStyle = 'coral';
+                context.fillRect(5, 5, pozitie * (W - 10), 30);
+                context.strokeStyle = 'black';
+                context.strokeRect(5, 5, W - 10, 30);
+
+                requestAnimationFrame(desenare);
+            }
+            desenare();
+            // tratare evenimente
+
+            function avanseaza() {
+                index = (index + 1) % lista.length;
+                audio.src = lista[index];
+                audio.load();
+                audio.play();
+            }
+
+            canvas.addEventListener('click', e => {
+                if (index === 1) {
+                    avanseaza();
+                }
+            })
+        }
+    </script>
 </head>
 
 <body>
-
+    <canvas height="80" width="200"></canvas>
 </body>
 
 </html>
